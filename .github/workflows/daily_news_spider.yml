@@ -30,6 +30,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install scrapy parsel w3lib sqlalchemy redis
 
+      # 3.5 删除其他爬虫文件（避免加载数据库依赖）
+      - name: Remove other spiders
+        run: |
+          rm -f news/spiders/weixin.py
+          rm -f news/spiders/weibo.py
+          rm -f news/spiders/toutiao_m.py
+          rm -f news/spiders/ip.py
+
       # 4. 运行爬虫（只加载 cctv 爬虫，跳过其他有数据库依赖的爬虫）
       - name: Run the news spider
         run: |
