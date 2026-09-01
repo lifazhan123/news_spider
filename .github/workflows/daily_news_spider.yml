@@ -38,10 +38,10 @@ jobs:
           rm -f news/spiders/toutiao_m.py
           rm -f news/spiders/ip.py
 
-      # 4. 运行爬虫（只加载 cctv 爬虫，跳过其他有数据库依赖的爬虫）
+      # 4. 运行爬虫（用 Python 直接运行，避免加载其他模块）
       - name: Run the news spider
         run: |
-          scrapy crawl cctv -s SPIDER_MODULES=news.spiders.cctv
+          python news/spiders/cctv.py
 
       # 5. (可选) 将抓取结果提交回仓库
       - name: Commit and push results
