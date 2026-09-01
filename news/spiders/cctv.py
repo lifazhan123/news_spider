@@ -79,3 +79,11 @@ class CctvSpider(scrapy.Spider):
             'body': body,
             'crawl_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         }
+        # 独立运行入口（用于 GitHub Actions 直接执行）
+if __name__ == "__main__":
+    from scrapy.crawler import CrawlerProcess
+    from scrapy.utils.project import get_project_settings
+    
+    process = CrawlerProcess(get_project_settings())
+    process.crawl(CctvSpider)
+    process.start()
