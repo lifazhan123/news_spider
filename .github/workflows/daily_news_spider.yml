@@ -5,7 +5,7 @@ name: daily_news_spider
 on:
   schedule:
     # 定时触发：这里是UTC时间，每天0点10分（北京时间早上8点10分）运行
-    - cron: '11 11 * * *'
+    - cron: '20 11 * * *'
   # 允许手动触发，方便测试
   workflow_dispatch:
 
